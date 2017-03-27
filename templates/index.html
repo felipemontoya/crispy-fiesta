@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <h3 class="title is-2">
+      <a href="/">
+        <span class="icon is-medium">
+          <i class="fa fa-th-large"></i>
+        </span>
+        Simple<strong>APP</strong>
+      </a>
+    </h3>
+    <h4 class="subtitle is-4">A simple app to showcase the use of MongoDB</h4>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Built with...</p>
+              <p class="subtitle">Flask</p>
+            </article>
+            <article class="tile is-child notification is-warning">
+              <p class="title">...by</p>
+              <p class="subtitle">Felipe Montoya</p>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Kitten tax</p>
+              <p class="subtitle">Caution: includes kittens</p>
+              <figure class="image is-4by3">
+                <img src="https://placekitten.com/640/480"/>
+              </figure>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">Operations</p>
+            <p class="subtitle">The technical staff </p>
+            <div class="content">
+              <p>This app runs on a server using gunicorn to launch the flask code. It uses nginx as a proxy to handle the web requests and forward the relevant parts to gunicorn.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <p class="title">The mongo part</p>
+          <p class="subtitle">Powered by <a class="tag is-warning" href="https://docs.mongodb.com/">Mongo<strong>DB</strong></a></p>
+          <div class="content">
+
+            <p>This application has been accessed a total of {{ last_access.consecutive }} times.</p>
+            <p>The last time was on {{ last_access.datetime.strftime("%Y-%m-%d") }}, at {{ last_access.datetime.strftime("%H:%M:%S") }}</p>
+
+            <p class="subtitle">But there is more:</p>
+            <p>Stats for this collection</p>
+
+            <ul>
+                {% for key, value in stats.iteritems() %}
+                <li>{{ key }} : {{ value|string|truncate(100) }}</li>
+                {% endfor %}
+            </ul>
+
+          </div>
+        </article>
+      </div>
+    </div>
+
+</section>
+
+{% endblock %}
