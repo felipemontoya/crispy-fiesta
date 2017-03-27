@@ -52,7 +52,17 @@
           <p class="subtitle">Powered by <a class="tag is-warning" href="https://docs.mongodb.com/">Mongo<strong>DB</strong></a></p>
           <div class="content">
 
-          content
+            <p>This application has been accessed a total of {{ last_access.consecutive }} times.</p>
+            <p>The last time was on {{ last_access.datetime.strftime("%Y-%m-%d") }}, at {{ last_access.datetime.strftime("%H:%M:%S") }}</p>
+
+            <p class="subtitle">But there is more:</p>
+            <p>Stats for this collection</p>
+
+            <ul>
+                {% for key, value in stats.iteritems() %}
+                <li>{{ key }} : {{ value|string|truncate(100) }}</li>
+                {% endfor %}
+            </ul>
 
           </div>
         </article>
