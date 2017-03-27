@@ -12,7 +12,7 @@ from flask_pymongo import PyMongo
 from datetime import datetime
 
 SIMPLE = Flask(__name__)
-SIMPLE.config['MONGO_HOST'] = '192.168.50.12'
+SIMPLE.config.from_object('settings.Config')
 
 MONGO = PyMongo(SIMPLE)
 
