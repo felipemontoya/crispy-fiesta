@@ -59,7 +59,7 @@
             <p>Stats for this collection</p>
 
             <ul>
-                {% for key, value in stats.iteritems() %}
+                {% for key, value in stats.items() %}
                 <li>{{ key }} : {{ value|string|truncate(100) }}</li>
                 {% endfor %}
             </ul>
